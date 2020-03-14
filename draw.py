@@ -1,5 +1,6 @@
 from display import *
 from matrix import *
+import math
 
   # ====================
   # add the points for a rectagular prism whose 
@@ -7,7 +8,18 @@ from matrix import *
   # height and depth dimensions.
   # ====================
 def add_box( points, x, y, z, width, height, depth ):
-    pass
+    add_edge(points,x,y,z,x+width,y,z)
+    add_edge(points,x+width,y,z,x+width,y-height,z)
+    add_edge(points,x+width,y-height,z,x,y-height,z)
+    add_edge(points,x,y-height,z,x,y,z)
+    add_edge(points,x,y,z-depth,x+width,y,z-depth)
+    add_edge(points,x+width,y,z-depth,x+width,y-height,z-depth)
+    add_edge(points,x+width,y-height,z-depth,x,y-height,z-depth)
+    add_edge(points,x,y-height,z-depth,x,y,z-depth)
+    add_edge(points,x,y,z,x,y,z-depth)
+    add_edge(points,x+width,y,z,x+width,y,z-depth)
+    add_edge(points,x+width,y-height,z,x+width,y-height,z-depth)
+    add_edge(points,x,y-height,z,x,y-height,z-depth)
 
   # ====================
   # Generates all the points along the surface
@@ -16,7 +28,17 @@ def add_box( points, x, y, z, width, height, depth ):
   # Returns a matrix of those points
   # ====================
 def generate_sphere( points, cx, cy, cz, r, step ):
-    pass
+    rot = 0
+    while rot < 1:
+        circ = 0
+        while circ < 1:
+            x = r*math.cos(math.pi*circ)+cx
+            y = r*math.sin(math.pi*circ)*math.cos(2*math.pi*rot)+cy
+            z = r*math.sin(math.pi*circ)*math.sin(2*math.pi*rot)+cz
+            points.append([x,y,z])
+            circ += step
+        rot += step
+    return points
 
   # ====================
   # adds all the points for a sphere with center 
@@ -25,7 +47,10 @@ def generate_sphere( points, cx, cy, cz, r, step ):
   # necessary points
   # ====================
 def add_sphere( points, cx, cy, cz, r, step ):
-    pass
+    dots = generate_sphere([],cx,cy,cz,r,step)
+    for p in dots:
+        add_edge(points,p[0],p[1],p[2],p[0],p[1]+1,p[2])
+    
 
 
   # ====================
