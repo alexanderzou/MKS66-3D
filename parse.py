@@ -74,6 +74,9 @@ def parse_file( fname, edges, transform, screen, color ):
         if line == 'sphere':
             add_sphere(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), step)
         
+        if line == 'torus':
+            add_torus(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), step)
+        
         if line == 'circle':
             #print 'CIRCLE\t' + str(args)
             add_circle(edges,
