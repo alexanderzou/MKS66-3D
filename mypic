@@ -1,0 +1,34 @@
+ident
+torus
+0 0 0 2 25
+rotate
+z 50
+rotate
+y 135
+move
+320 250 0
+apply
+ident
+sphere
+0 250 0 200
+sphere
+210 250 0 0.7
+sphere
+220 250 0 1.738
+sphere
+230 250 0 1.83
+sphere
+240 250 0 0.974
+sphere
+270 250 0 20.079
+sphere
+320 250 0 16.724
+sphere
+360 250 0 7.284
+sphere
+380 250 0 7.072
+sphere
+400 250 0 0.341
+display
+save
+mypic.png
